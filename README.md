@@ -2,9 +2,10 @@ To run:
 
 `node start.js`
 
-Navigate to `localhost:8000`
+Navigate to `localhost:9005`
 
-Notice that it hangs.
+Refresh a couple times.
 
-Notice that if you uncomment the section reading `stdout`, navigating to
-localhost:8000 works. Otherwise, it hangs.
+Notice that it hangs after 2 refreshes.
+
+Notice that if you uncomment the section reading `stdout`, it never hangs.

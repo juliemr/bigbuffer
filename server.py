@@ -1,16 +1,21 @@
 import SimpleHTTPServer
 import SocketServer
-import threading
+import sys
+
+def printit(length):
+  for i in range(0, length):
+    sys.stdout.write('0')
  
-def printit():
-  threading.Timer(0.001, printit).start()
-  print("lotsa text lotsa text lotsa text lotsa text");
-printit()
+PORT = 9005
  
-PORT = 8000
- 
-Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
- 
+
+class LoudHttpRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
+  def do_GET(arg):
+    printit(10000)
+    return SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(arg)
+
+Handler = LoudHttpRequestHandler
+
 httpd = SocketServer.TCPServer(("", PORT), Handler)
  
 print "serving at port", PORT
